@@ -1,0 +1,122 @@
+div.header {
+	background-color:#0767c8;
+	width:100%;
+	height:40px;
+	position:fixed;
+	left:0;
+	top:0;	
+	z-index:20;
+	border:2px solid #0767c8;
+}
+
+div.header p{
+	line-height:40px;
+}
+
+
+div.content {
+	width:100%;
+	position:relative;
+	left:0;
+	top:40px;
+}
+
+div {
+	background-color:white;
+	padding:0 0px;
+}
+
+body {
+	margin:0;
+}
+
+* {
+	color:red;
+}
+
+.red {
+	font-size:10px;
+	color:red;
+}
+
+.yellow {
+	font-size:20px;
+	color:tan;
+}
+
+a.red.yellow {
+	font-size:30px;
+	color:pink;
+}
+
+#important {
+	border:1px solid red;
+	width:auto;
+}
+
+p[name] {
+	border:4px solid blue;
+}
+
+p[game][name] {
+	border:5px solid tomato;
+}
+
+* {
+	margin:0;
+	padding:10px 0 20px 0px;
+}
+
+p.son > a.son {
+	color:blue;
+	text-decoration:none;
+}
+	
+
+
+a.red:link {
+	color:blue;
+	font-size:50px;
+}
+
+a.red:visited {
+	color:green;
+	font-size:50px;
+}
+
+
+a.red:hover {
+	color:yellow;
+	font-size:50px;
+}
+
+
+
+a.red:active {
+	color:tan;
+	font-size:50px;
+}
+
+a:first-child {
+	background-color:tan;
+}
+
+p:lang(no) {
+ 	background-color:tan;
+	border:5px solid black;
+	border-radius:50px;
+	box-shadow:10px 10px 3px gray;
+}
+
+div.nto {
+	border-image:url('images/border.png') 30 30 round;
+	-moz-border-image:url('images/border.png') 30 30 round;
+	border:10px solid black;
+	position:relative;
+	left:0px;
+	top:50px;
+	width:100px;
+}
+p.textwrap {
+	word-wrap:break-word;
+}

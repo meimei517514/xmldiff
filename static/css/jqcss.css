@@ -1,0 +1,30 @@
+.jqcss {
+	color:tan;
+	border:5px solid red;
+}
+
+.size {
+	width:200px;
+	height:300px;
+	padding:10px;
+	border:5px solid pink;
+	margin:3px;
+	background-color:tan;
+}
+
+div,ul,li,p.travel,ol,p.inli {
+	border:5px solid gray;
+	color:gray;
+	margin:5px;
+}
+
+.recover {
+	border:5px solid gray;
+	color:gray;
+	margin:5px;
+}
+
+div.ajsample {
+	width:300px;
+	height:100px;
+}

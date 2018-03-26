@@ -1,0 +1,244 @@
+
+div#one {
+	color:blue;
+	width:1000px;
+}
+
+div#two {
+	width:500px;
+
+}
+
+input#password {
+	type:password;
+}
+
+input#submit {
+	value:submit;
+}
+
+h1,h2,h3,h4,h5,h6,body {
+	color:red;
+	font-size:20px;
+	font-family:serif;
+	font-style:normal;
+	font-weight:100;
+
+
+
+
+}
+
+a button {
+	color:blue;
+	font-size:30px;
+}
+
+#comment {
+	color:pink;
+	font-size:10px;
+	text-indent:10px;
+	text-align:center;
+	word-spacing:10px;
+	letter-spacing:2px;
+	text-transform:capitalize;
+	text-decoration:blink;	
+}
+
+.bird {
+	color:gray;
+	font-size:40px;
+	border:red;
+}
+
+h2 p{
+	color:black;
+	font-size:50px;
+	background-image:url('images/flower.gif');
+	/*width:1000px;
+	height:1000px;
+	*/
+	background-position:top;
+	background-size:100px 200px;
+	background-repeat:repeat-x;
+	border:red;
+	line-height:100px;
+	text-shadow:10px 10px  tan;
+}
+
+[name=laugh] {
+	color:aqua;
+	font-size:60px;
+	background-color:black;
+	padding:30px;
+}
+
+
+[name=space] {
+	color:steelblue;
+	font-size:70px;
+	white-space:pre-line;
+
+}
+a {
+	text-decoration:none;
+	background-color:blue;
+}
+
+a.aspecial:link {
+	color:tan;
+}
+
+
+a.aspecial:visited {
+	color:tan
+}
+
+a.aspecial:hover {
+	color:thistle;
+}
+
+a.aspecial:active {
+	color:tomato;
+}
+ 
+ul {
+	width:500px;
+	border:1px solid pink;
+	list-style-type:square;
+	list-style-image:url('images/sidample.png');
+	list-style-position:inside;
+	/*outline-style:solid;
+	outline-width:5px;
+	outline-color:tan;
+	*/
+	padding:100px 1px 30px 10px;
+	margin:10% 10% 20% 10%;
+}
+
+table {
+	border:5px solid;
+	width:100%;
+	border-color:tomato;
+	border-collapse:collapse;
+}
+
+caption { 
+	text-align:center;
+	color:black;
+	background-color:green;
+}
+th { 
+	text-align:center;
+	color:black;
+	background-color:gray;
+	border:5px solid tomato;
+
+}
+
+tr.tan {
+	background-color:tan;
+	border:5px solid tomato;
+
+}
+
+tr.pink {
+	background-color:pink;
+	border:5px solid tomato;
+
+}
+
+td {
+	border:5px solid tomato;
+}
+
+p.border {
+	border-color:tan pink blue black;
+	border-style:solid dotted dashed double;
+	border-width:5px 5px 10px 5px;
+	margin:10px 10px 10px 10px;
+}
+
+p.relative {
+	position:relative;
+	left:10px;
+	bottom:20px;
+	border:5px solid tan;
+	width:1000px;
+}
+
+p.absolute {
+	position:absolute;
+	right:50px;
+	bottom:10px;
+	border:5px solid pink;
+	z-index:-1;
+}
+
+p.overflow {
+	width:100px;
+	height:50px;
+	overflow:auto;
+	background-color:tomato;
+}
+
+div.fit {
+	background-color:tan;
+	width:200px;
+	height:100px;
+	border:5px solid pink;
+	float:left;
+}
+
+
+div.float {
+	background-color:green;
+	width:200px;
+	height:50px;
+	border:5px solid blue;
+	overflow:auto;
+	float:left;
+}
+	
+p.float {
+	border:5px solid tan;
+	width:500px;
+	height:1000px;
+	float:left;
+	/*	border-collapse:collapse;*/
+}
+
+img.two {
+	width:500px;
+	height:800px;
+	vertical-align:text-top;
+	float:left;
+	border:5px solid pink;
+	clear:right;
+
+}
+
+img.one {
+	width:500px;
+	height:800px;
+	vertical-align:text-top;
+	float:left;
+	border:5px solid pink;
+
+}
+
+table.float {
+	border:5px solid steelblue;
+	border-collapse:collapse;
+}
+
+p.header {
+	background-color:#0767c8;
+	width:100%;
+	height:40px;
+	position:fixed;
+	left:0;
+	top:0;
+	line-height:40px;
+	margin:0px; 
+}
