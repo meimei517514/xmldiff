@@ -130,7 +130,7 @@ def get_celldata(row_data):
         temp_data = list(set(row_data))
         temp_data.sort(key=row_data.index)
         row_data=temp_data
-        
+      
     for cell in row_data:
         index_re=re.search("Index=\"([^\W]+)\"",cell)
     

@@ -2,7 +2,7 @@
 from basecode.xmlaccess import *
 from git import *
 from datetime import datetime
-import re,copy,os.path
+import re,copy,os.path,json
 
 
 path_sum=parse_path()
@@ -397,16 +397,22 @@ def map_truediff(row_cinfo,sheet_header):
     #将最终要显示的数据格式化
     diff_data=[]
 
+    #在分页中间删除一些行后，由于后面的数据前移，导致diff信息有些重复，这里再去重一次 
+    temp_data=[ json.dumps(data) for data in row_cinfo ]
+    temptwo_data = list(set(temp_data))
+    temptwo_data.sort(key=temp_data.index)
+    row_cinfo=[ json.loads(data) for data in temptwo_data ]
+
     for info in row_cinfo:
 
         #如果某个子表的数据是空的，row_cinfo的数据在之前是没有处理好的。先在这里忽略掉没有处理好的数据，以后再看看有什么好办法
-        reference_row=[ row_list[0] for row_list in info["new"] if type(row_list)==tuple]
+        reference_row=[ row_list[0] for row_list in info["new"] if row_list]
 
-        reference_row=[ row_list[0] for row_list in info["old"] if type(row_list)==tuple] if not reference_row else reference_row
+        reference_row=[ row_list[0] for row_list in info["old"] if row_list] if not reference_row else reference_row
 
-        old_origin=[ row_list[1] for row_list in info["old"] if type(row_list)==tuple]
+        old_origin=[ row_list[1] for row_list in info["old"] if row_list]
         
-        new_origin=[ row_list[1] for row_list in info["new"] if type(row_list)==tuple]
+        new_origin=[ row_list[1] for row_list in info["new"] if row_list]
 
         #print "diff_data:--------", old_origin,new_origin
         
@@ -462,7 +468,6 @@ def get_changerow(file_diff):
         #print row_info
 
         if row_info and any(row_info.values()):
-
             row_changed.append(row_info)
 
     return row_changed   
@@ -495,6 +500,7 @@ def get_rowseq(diff):
     if "43000026" in "".join(diff):
     
     '''
+    #print(diff)
 
     diff_list=diff.split("\n")
 
