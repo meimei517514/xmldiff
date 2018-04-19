@@ -1,57 +1,5 @@
 ### -*- coding: UTF-8 -*-:
-import os,os.path,re,time,html
-
-def parse_path():
-
-    #读path.txt配置文件，获得git地址信息
-    path_dict={}
-    with open("basecode/path.txt") as path:
-
-        for line in path.readlines():
-
-            if not line.startswith("#"): 
-
-                line_info=line.split("=")
-                
-                line_info=[ x.strip("\n") for x in line_info ]
-
-                path_name=line_info[0]
-
-                path_info=line_info[1]
-
-                path_dict[path_name]=path_info
-
-        
-    return path_dict
-        
-
-
-
-def get_xmlpath():
-
-    #获得common目录下所有xml文件的真实路径
-    xml_path = parse_path()["xml_path"]
-
-    xml_names=[]    
-
-    xml_paths={}
-    
-    for root,dirs,files in os.walk(xml_path):     
-
-        for name in files:
-
-            if ".xml" in name:
-
-                xml_names.append(name) 
-
-                file_path=os.path.join(root,name)
-
-                xml_paths[name]=file_path
-                
-    return sorted(xml_names),xml_paths
-
-
-
+import re,html
 
 
 def open_xml(path_name):

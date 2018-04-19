@@ -1,13 +1,7 @@
 ### -*- coding: UTF-8 -*-:
 from basecode.xmlaccess import *
-import os,os.path,copy,re
-from git import *
-
-path_sum=parse_path()
-
-git_path = path_sum["git_path"]
-
-repo=Repo.init(git_path)
+from basecode.xmlconfig import *
+import copy,re
 
 xml_names,xml_paths=get_xmlpath()
 

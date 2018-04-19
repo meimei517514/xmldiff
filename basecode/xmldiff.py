@@ -1,17 +1,9 @@
 ### -*- coding: UTF-8 -*-:
 from basecode.xmlaccess import *
-from git import *
+from basecode.xmlconfig import *
 from datetime import datetime
-import re,copy,os.path,json
+import re,copy,json
 
-
-path_sum=parse_path()
-
-project_path = path_sum["project_path"]
-
-git_path = path_sum["git_path"]
-
-repo=Repo.init(git_path)
 
 
 def get_gitbranch(branch_name):
