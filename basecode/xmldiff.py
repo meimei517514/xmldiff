@@ -27,7 +27,7 @@ def get_gitbranch(branch_name):
 
     branch_list=[ branch for branch in branch_list if get_usefulbranch(branch) ]
 
-    valid_branch=["master","gangtai","mailiang"]
+    valid_branch=["master","gangtai","mailiang","xinmatai","korea"]
 
     valid_branch.extend(branch_list)
  
