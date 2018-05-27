@@ -25,13 +25,10 @@ def parse_config():
         
     return path_dict
         
-
-
-
 def get_xmlpath():
 
     #获得common目录下所有xml文件的真实路径
-    xml_path = parse_config()["xml_path"]
+    xml_path = parse_config()["common_path"]
 
     xml_names=[]    
 
@@ -50,6 +47,27 @@ def get_xmlpath():
                 xml_paths[name]=file_path
                 
     return sorted(xml_names),xml_paths
+
+
+def get_filepath():
+
+    #获得common目录下所有文件的真实路径
+    common_path = parse_config()["common_path"]
+
+
+    file_paths={}
+    
+    for root,dirs,files in os.walk(common_path):     
+
+        for name in files:
+                
+                refer_root=root.split(common_path)[1]
+
+                file_path=os.path.join(refer_root,name) if refer_root else name
+
+                file_paths[name]=file_path
+                
+    return file_paths
 
 
 

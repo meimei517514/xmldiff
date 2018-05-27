@@ -1,4 +1,4 @@
 #配置表路径
-xml_path=/home/maliying/common/design
+common_path=/home/maliying/common/design
 project_path=/home/maliying/common
 git_path=/home/maliying/common/.git

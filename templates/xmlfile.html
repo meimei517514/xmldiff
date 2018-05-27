@@ -16,7 +16,6 @@
 	<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="static/css/starter.css" rel="stylesheet">
-	<script src="static/js/xml.js"></script>
 
 </head>
 
@@ -30,13 +29,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			  </button>
-			  <a class="navbar-brand" href="/xmldiff">项目</a>
+			  <a class="navbar-brand" href="/xmlfile">项目</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 			  <ul class="nav navbar-nav">
 				<li><a href="/xmlrefer">配置表替换TID</a></li>
-				<li class="active"><a href="/xmldiff">配置表提交记录</a></li>
-				<li><a href="/xmlfile">文件提交记录</a></li>
+				<li><a href="/xmldiff">配置表提交记录</a></li>
+				<li  class="active"><a href="/xmlfile">文件提交记录</a></li>
 			  </ul>
 			</div><!--/.nav-collapse -->
 		  </div>
@@ -48,8 +47,8 @@
             <br/>
              <ul class="nav nav-pills" role="tablist">
 
-                <form action="/xmldiff" method="get">
-                    <select id="branch_name" name="branch_name">
+                <form action="/xmlfile" method="get">
+                     分支：<select id="branch_name" name="branch_name">
 
                         {% for branch in branch_list %}
 
@@ -64,32 +63,38 @@
                 </form> 
 
                 <br/>
-
-                <form id="author" action="/xmldiff" method="get" onsubmit="setpara(this.id)">
-
-                    <input id="authorbranch_name" style="display:none" type="text" name="branch_name" />
-
-                    <select id="author_name" name="author_name">
-
-                        <option id="all" value="all" title="option">all author</option>
-
-                        {% for author in author_name %}
-
-                        <option id={{author}} value={{author}} title="option">{{author}}</option>
-
-                        {% endfor %}
-                    </select>
-
-                    <input style="display:none" type="text" name="upgrade_info" value="pullchange" />
-                    <input type="submit" value="Pull Newly Change" />
-                </form> 
+                <form action="/xmlfile" method="get"> 
+                   请输入文件名： <input type="text" id="text_input" placeholder="例如：audio.xml" onkeyup="showfilename(this.value)" />
+                </form>
 
                 <br/>
-                <form id="hash" action="/xmldiff" method="get" onsubmit="setpara(this.id)">
+                    
+                <select id="file_name" name="file_name" style="display:none" > </select>
+
+
+                <form action="/xmlfile" id="file" onsubmit="setpara(this.id)"> 
+                    <input id="filebranch_name" style="display:none" type="text" name="branch_name" />
+                    <input id="filefile_name" style="display:none" type="text" name="file_name" />
+ 
+				    <li style="display:none" id="no_matchfile">无匹配的文件</a></li>
+
+                    <br/>
+
+                    <input type="submit" value="Choose File" />
+                    
+
+                </form>
+
+                <br/>
+
+                <h3 style="display:none" id="chosen_file"></h3>
+
+                <br/>
+                <form style="display:none" id="hash" action="/xmlfile" method="get" onsubmit="setpara(this.id)">
 
                     <input id="hashbranch_name" style="display:none" type="text" name="branch_name" />
-                    <input id="hashauthor_name" style="display:none" type="text" name="author_name" />
-
+                    <input id="hashfile_name" style="display:none" type="text" name="file_name" />
+                    提交记录:
                     <select id="selected_hash" name="selected_hash">
                         {% for hash,message in hash_info %}
 
@@ -101,21 +106,21 @@
                     <input type="submit" value="Submit" />
                 </form> 
                     
-           </ul>
+            </ul>
             <br/>        
-            <ul class="nav">
+            <ul style="display:none" class="nav" id="author">
                     <li><pre>{{ author }}</pre></li> 
             </ul>
-
+            <br/>        
        </div>
-    </div>
+
        <div class="col-xs-12">
             <ul class="nav nav-pills" role="tablist">
                     {% for name in file_namelist %}
                         <li role="presentation" class="active">
-                        <form id="{{name}}" action="/xmldiff" method="get" onsubmit="setpara(this.id)">
+                        <form id="{{name}}" action="/xmlfile" method="get" onsubmit="setpara(this.id)">
                             <input id="{{name}}branch_name" style="display:none" type="text" name="branch_name" />
-                            <input id="{{name}}author_name" style="display:none" type="text" name="author_name" />
+                            <input id="{{name}}file_name" style="display:none" type="text" name="file_name" />
                             <input id="{{name}}selected_hash" style="display:none" type="text" name="selected_hash" />
                             <input style="display:none" type="text" name="selected_file" value="{{name}}" />
                             <input id="selected_file" type="submit" value={{name}} title="input"/>
@@ -127,9 +132,9 @@
             <ul class="nav nav-pills" role="tablist">
                     {% for file_name,sheet_name in sheet_namelist %}
                         <li role="presentation" class="active">
-                        <form id="{{sheet_name}}" action="/xmldiff" method="get" onsubmit="setpara(this.id)">
+                        <form id="{{sheet_name}}" action="/xmlfile" method="get" onsubmit="setpara(this.id)">
                             <input id="{{sheet_name}}branch_name" style="display:none" type="text" name="branch_name" />
-                            <input id="{{sheet_name}}author_name" style="display:none" type="text" name="author_name" />
+                            <input id="{{sheet_name}}file_name" style="display:none" type="text" name="file_name" />
                             <input id="{{sheet_name}}selected_hash" style="display:none" type="text" name="selected_hash" />
                             <input style="display:none" type="text" name="selected_file" value="{{file_name}}" />
                             <input style="display:none" type="text" name="selected_sheet" value="{{sheet_name}}" />
@@ -139,9 +144,9 @@
                     {% endfor %}
             </ul>
             <br>
-        </div>
+       </div>
 
-      <div class="col-xs-12">
+       <div class="col-xs-12">
             <ul class="nav">           
                 {% for diff in other_diff %}
                     <pre>{{ diff }}</pre>
@@ -161,14 +166,18 @@
 
        </div>
  
+
+     </div>
+
     </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+	<script src="static/js/xml.js"></script>
    	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 	<script src="static/bootstrap/js/bootstrap.min.js"></script>
-	<script src="static/js/treeview.js"></script>
+	<!--script src="static/js/treeview.js"></script>
 
 </body></html>

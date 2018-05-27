@@ -455,7 +455,6 @@ def get_changerow(file_diff):
     #分割后的diff列表，第一个值是文件的地址信息，无效
     for diff in diff_sliced[1:]:
 
-        #print diff
         row_info=get_rowseq(diff)
         #print row_info
 
