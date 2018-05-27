@@ -49,7 +49,6 @@ function set_filechosen() {
         hashobj = document.getElementById("hash") 
         
         hashobj.style.display="block"; 
-        filenameobj.style.display="block"; 
         chosenfileobj.style.display="block";
         chosenfileobj.innerHTML="当前选中的文件："+file_name;
 
@@ -139,19 +138,27 @@ function showfilename(str){
             new_option.setAttribute("id",data[key]);
             new_option.setAttribute("title","option");
             selectobj.options.add(new_option); 
-       }
+        }
 
+        nomatchfile_obj=document.getElementById("no_matchfile")
+        filename_obj=document.getElementById("file_name")
+        submitname_obj=document.getElementById("submit_name")
+
+        
         if (str.length==0 ) {
-            document.getElementById("no_matchfile").style.display="none";
-            document.getElementById("file_name").style.display="none";
+           nomatchfile_obj.style.display="none";
+           filename_obj.style.display="none";
+           submitname_obj.style.display="none";
         }
         else if ( data.length==0 ) {
-            document.getElementById("no_matchfile").style.display="block";
-            document.getElementById("file_name").style.display="none";
+           nomatchfile_obj.style.display="block";
+           filename_obj.style.display="none";
+           submitname_obj.style.display="none";
         }
         else {
-            document.getElementById("no_matchfile").style.display="none";
-            document.getElementById("file_name").style.display="block";
+           nomatchfile_obj.style.display="none";
+           filename_obj.style.display="block";
+           submitname_obj.style.display="block";
         } 
 
     });
