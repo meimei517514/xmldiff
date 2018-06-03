@@ -213,7 +213,6 @@ def get_mapediff(selected_hash,selected_sheet,path_name,row_seq):
 
     sheet_cinfo={}
 
-    #print selected_hash
     repo.git.checkout(selected_hash,path_name)
 
     new_sheetname,new_sheetdata=get_sheetname(path_name,new_row,sheet_cinfo) 
@@ -313,7 +312,7 @@ def get_sheet(selected_sheet,sheet_data,row_cinfo,c_type):
 
         sheet_area=(start_row,end_row)
 
-        row_refer,row_area=get_rowinfo(sheet_data)
+        row_refer=get_rowinfo(sheet_data)
 
         row_fulldata=get_sheetdata(sheet_detail)
 
@@ -355,7 +354,7 @@ def extract_rowdata(selected_sheet,row_refer,row_fulldata,row,sheet_area):
 
     fulldata_len=len(row_fulldata)-1
 
-    row_data=copy.deepcopy(row_fulldata[reference_row])  if reference_row<=fulldata_len  else [ selected_sheet] 
+    row_data=copy.deepcopy(row_fulldata[reference_row])  if reference_row<=fulldata_len  else  None
 
     #print row,reference_row,row_data
 
@@ -640,9 +639,9 @@ def get_rowinfo(sheet_list):
 
     row_refer=dict( [ (row,key) for key,(start,end) in enumerate(row_range) for row in range(start,end+1) ] )
 
-    row_area=dict( [ (row,(start,end)) for key,(start,end) in enumerate(row_range) for row in range(start,end+1) ] )
+    #row_area=dict( [ (row,(start,end)) for key,(start,end) in enumerate(row_range) for row in range(start,end+1) ] )
 
-    return row_refer,row_area
+    return row_refer
 
 
 
