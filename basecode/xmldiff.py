@@ -27,7 +27,7 @@ def get_gitbranch(branch_name):
 
     branch_list=[ branch for branch in branch_list if get_usefulbranch(branch) ]
 
-    valid_branch=["master","gangtai","mailiang","xinmatai","korea"]
+    valid_branch=["master","gangtai","mailiang","xinmatai","korea","japan"]
 
     valid_branch.extend(branch_list)
  
@@ -361,8 +361,6 @@ def extract_rowdata(selected_sheet,row_refer,row_fulldata,row,sheet_area):
     return (reference_row,row_data)
 
 
-
-
 def get_header(row_fulldata):
 
     #获得子表的表头
@@ -374,7 +372,11 @@ def get_header(row_fulldata):
  
             next_cell=row_firstcell[key+1] if key!=len(row_firstcell)-1 else cell
 
-            if (cell and not any(row_firstcell[key+1:key+11]) ) or (not cell.isalnum() and any(alp.isalnum() for alp in next_cell)):
+            cell_re=re.search("[a-z]|[0-9]|[A-Z]",cell)
+
+            nextcell_re=re.search("[a-z]|[0-9]|[A-Z]",next_cell)
+
+            if (cell and not any(row_firstcell[key+1:key+11]) ) or (not cell_re and nextcell_re):
 
                 header=copy.deepcopy(row_fulldata[:key+1])
 
