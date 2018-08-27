@@ -54,7 +54,7 @@ def get_usefulbranch(branch):
 
         gap_days=(current_date-branch_date).days
 
-        return True if gap_days<=50 else False
+        return True if gap_days<=90 else False
     else:
         return False
 
@@ -231,7 +231,7 @@ def get_mapediff(selected_hash,selected_sheet,path_name,row_seq):
 
     selected_sheet= selected_sheet or  ( sheet_name[0] if sheet_name else None )
 
-    row_cinfo= sheet_cinfo[selected_sheet] if selected_sheet and sheet_cinfo else None
+    row_cinfo= sheet_cinfo[selected_sheet] if selected_sheet and sheet_cinfo  else None
 
     maped_diff=get_data(selected_sheet,row_cinfo,new_sheetdata,old_sheetdata)  if selected_sheet else {}  
 
@@ -334,7 +334,8 @@ def get_sheet(selected_sheet,sheet_data,row_cinfo,c_type):
                 if crow_data[row][1]:
                     row_cinfo[index][c_type][key]=crow_data[row]
                 else:
-                    row_cinfo[index][c_type].remove(row)
+                    if row in row_cinfo[index][c_type]:
+                        row_cinfo[index][c_type].remove(row)
 
         sheet_header=get_header(row_fulldata)
 
@@ -399,13 +400,13 @@ def map_truediff(row_cinfo,sheet_header):
     for info in row_cinfo:
 
         #如果某个子表的数据是空的，row_cinfo的数据在之前是没有处理好的。先在这里忽略掉没有处理好的数据，以后再看看有什么好办法
-        reference_row=[ row_list[0] for row_list in info["new"] if row_list]
+        reference_row=[ row_list[0] for row_list in info["new"] if row_list and type(row_list)!=int ]
 
         reference_row=[ row_list[0] for row_list in info["old"] if row_list] if not reference_row else reference_row
 
-        old_origin=[ row_list[1] for row_list in info["old"] if row_list]
+        old_origin=[ row_list[1] for row_list in info["old"] if row_list and type(row_list)!=int ]
         
-        new_origin=[ row_list[1] for row_list in info["new"] if row_list]
+        new_origin=[ row_list[1] for row_list in info["new"] if row_list and type(row_list)!=int]
 
         #print "diff_data:--------", old_origin,new_origin
         
